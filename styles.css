@@ -313,71 +313,50 @@
   letter-spacing: .4px;
 }
 
-/* Animations */
+
+/* Walk all the way to the house entrance */
 @keyframes haven-walk-inside {
   0% {
     transform: translateX(0) translateY(0) scale(1);
+    opacity: 1;
   }
+
   12% {
-    transform: translateX(12px) translateY(-2px) scale(1);
+    transform: translateX(25px) translateY(-3px) scale(1);
+    opacity: 1;
   }
+
   28% {
-    transform: translateX(42px) translateY(0) scale(.94);
+    transform: translateX(70px) translateY(0) scale(.96);
+    opacity: 1;
   }
-  48% {
-    transform: translateX(79px) translateY(-2px) scale(.85);
+
+  45% {
+    transform: translateX(115px) translateY(-3px) scale(.9);
+    opacity: 1;
   }
-  70% {
-    transform: translateX(112px) translateY(0) scale(.76);
+
+  62% {
+    transform: translateX(165px) translateY(0) scale(.82);
+    opacity: 1;
   }
+
+  76% {
+    transform: translateX(205px) translateY(-2px) scale(.75);
+    opacity: 1;
+  }
+
+  88% {
+    transform: translateX(225px) translateY(0) scale(.7);
+    opacity: .9;
+  }
+
   100% {
-    transform: translateX(148px) translateY(0) scale(.62);
+    transform: translateX(240px) translateY(0) scale(.55);
     opacity: 0;
   }
 }
 
-@keyframes haven-door-open {
-  to { transform: perspective(400px) rotateY(-72deg); }
-}
-
-@keyframes haven-leg-left {
-  from { transform: rotate(-24deg); }
-  to { transform: rotate(27deg); }
-}
-
-@keyframes haven-leg-right {
-  from { transform: rotate(27deg); }
-  to { transform: rotate(-24deg); }
-}
-
-@keyframes haven-arm-left {
-  from { transform: rotate(25deg); }
-  to { transform: rotate(-28deg); }
-}
-
-@keyframes haven-arm-right {
-  from { transform: rotate(-28deg); }
-  to { transform: rotate(25deg); }
-}
-
-@keyframes haven-progress-run {
-  0% { transform: translateX(-110%); }
-  100% { transform: translateX(350%); }
-}
-
-@keyframes haven-brand-appear {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #haven-loader *,
-  #haven-loader *::before,
-  #haven-loader *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-}
 
 /* Account and seller verification workspace */
 .account-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:24px;align-items:start}.account-panel{background:var(--surface,#fff);border:1px solid var(--line,#e5e7eb);border-radius:20px;padding:clamp(18px,3vw,28px);box-shadow:0 12px 35px #172b2410}.account-panel h3{margin:0 0 8px;font-size:1.25rem}.account-panel form{display:grid;gap:14px;margin-top:18px}.account-panel label{display:grid;gap:7px;font-weight:600;font-size:.9rem}.account-panel input:not([type=checkbox]),.account-panel select,.account-panel textarea{width:100%;min-width:0;border:1px solid var(--line,#d8ded9);border-radius:10px;padding:12px 13px;background:#fff;color:inherit;font:inherit}.account-panel input[type=file]{font-size:.82rem;padding:10px}.account-panel .consent-row{display:flex;align-items:flex-start;gap:10px;font-weight:500;line-height:1.5}.account-panel .consent-row input{margin-top:4px;flex:0 0 auto}.verification-status{background:#f4f7f4;border:1px solid #dce6de;border-radius:12px;padding:14px;margin-top:14px}.verification-status p{margin:7px 0 0;font-size:.88rem;color:#5b665f}.verification-status strong{text-transform:capitalize}.form-message{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.88rem;color:var(--ink,#153d32)}@media(max-width:760px){.account-grid{grid-template-columns:1fr}.account-panel{padding:18px}}
