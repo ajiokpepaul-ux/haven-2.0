@@ -3,7 +3,7 @@
 /* Haven intro loader */
 (() => {
   const startTime = performance.now();
-  const minimumDisplayTime = 2600;
+  const minimumDisplayTime = 4800;
 
   function hideHavenLoader() {
     const loader = document.getElementById("haven-loader");
