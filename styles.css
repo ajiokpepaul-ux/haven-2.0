@@ -145,7 +145,7 @@
   background: #b98b53;
   border: 2px solid #f4ead8;
   transform-origin: left center;
-  animation: haven-door-open 1s ease 1.2s forwards;
+  animation: haven-door-open .9s ease-in-out 2.5s forwards;
 }
 
 .door-knob {
@@ -175,7 +175,7 @@
   width: 45px;
   height: 104px;
   z-index: 3;
-  animation: haven-walk-inside 3.3s ease-in-out .25s forwards;
+animation: haven-walk-inside 4.2s ease-in-out .3s forwards;
 }
 
 .walker-head {
