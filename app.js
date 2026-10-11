@@ -1,4 +1,39 @@
 /* Haven live build. Public stays come from Supabase; no demo listings are injected. */
+
+/* Haven intro loader */
+(() => {
+  const startTime = performance.now();
+  const minimumDisplayTime = 2600;
+
+  function hideHavenLoader() {
+    const loader = document.getElementById("haven-loader");
+    if (!loader) return;
+
+    const elapsed = performance.now() - startTime;
+    const remaining = Math.max(0, minimumDisplayTime - elapsed);
+
+    setTimeout(() => {
+      loader.classList.add("loader-exit");
+
+      setTimeout(() => {
+        loader.remove();
+      }, 700);
+    }, remaining);
+  }
+
+  // Wait for the page assets, then show the exit transition.
+  if (document.readyState === "complete") {
+    hideHavenLoader();
+  } else {
+    window.addEventListener("load", hideHavenLoader, {
+      once: true
+    });
+  }
+
+  // Prevent a broken or slow image from keeping the loader forever.
+  setTimeout(hideHavenLoader, 8000);
+})();
+
 const CONFIG = window.HAVEN_CONFIG || {};
 let stays=[], category="All", saved=new Set(), havenClient=null, currentUser=null;
 const $=s=>document.querySelector(s);
