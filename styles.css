@@ -66,5 +66,318 @@
 .payout-setup-panel{display:grid;grid-template-columns:minmax(0,1fr);align-items:start;gap:12px}.payout-setup-panel>div>strong{font-size:1rem}.payout-setup-panel form{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-items:end;gap:12px;width:100%}.payout-setup-panel form .btn{grid-column:1/-1;justify-self:start}.payout-setup-panel label{display:grid;min-width:0;gap:6px;font-size:.76rem;font-weight:750}.payout-setup-panel input{text-transform:none!important;width:100%;min-width:0}.payout-setup-panel .small-muted{max-width:900px;line-height:1.6}
 @media(max-width:680px){.payout-setup-panel form{grid-template-columns:1fr}.payout-setup-panel form .btn{width:100%}.host-form .two-col{grid-template-columns:1fr;gap:0}.form-section-title{padding-top:16px}.section-head #refreshListings,.section-head #myListingsRefresh{margin-top:15px}}
 
+/* ===== HAVEN WALK-IN INTRO ===== */
+#haven-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #14231c;
+  color: #f4ead8;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .65s ease, visibility .65s ease;
+}
+
+#haven-loader.loader-exit {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.haven-intro {
+  width: min(100%, 440px);
+  padding: 24px;
+  text-align: center;
+}
+
+.haven-scene {
+  position: relative;
+  width: 100%;
+  height: 245px;
+  overflow: hidden;
+}
+
+.haven-house {
+  position: absolute;
+  width: 174px;
+  height: 135px;
+  right: 30px;
+  bottom: 20px;
+  background: #30483a;
+  border: 2px solid #e5d4b5;
+  border-top: 0;
+}
+
+.haven-roof {
+  position: absolute;
+  right: 17px;
+  bottom: 145px;
+  width: 200px;
+  height: 115px;
+  border-top: 5px solid #e5d4b5;
+  border-left: 5px solid #e5d4b5;
+  transform: rotate(45deg) scale(.71);
+  transform-origin: center;
+}
+
+.haven-window {
+  position: absolute;
+  top: 23px;
+  width: 30px;
+  height: 34px;
+  background: #edce91;
+  border: 3px solid #f4ead8;
+  box-shadow: 0 0 20px #edce9160;
+}
+
+.window-left { left: 17px; }
+.window-right { right: 17px; }
+
+.haven-door {
+  position: absolute;
+  width: 54px;
+  height: 94px;
+  bottom: 0;
+  left: 58px;
+  background: #b98b53;
+  border: 2px solid #f4ead8;
+  transform-origin: left center;
+  animation: haven-door-open 1s ease 1.2s forwards;
+}
+
+.door-knob {
+  position: absolute;
+  top: 48px;
+  right: 5px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #f4ead8;
+}
+
+.haven-ground {
+  position: absolute;
+  bottom: 19px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #b6c4b5;
+}
+
+/* Character */
+.haven-walker {
+  position: absolute;
+  left: 25px;
+  bottom: 20px;
+  width: 45px;
+  height: 104px;
+  z-index: 3;
+  animation: haven-walk-inside 3.3s ease-in-out .25s forwards;
+}
+
+.walker-head {
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 19px;
+  height: 21px;
+  border-radius: 45% 45% 42% 42%;
+  background: #b98259;
+}
+
+.walker-body {
+  position: absolute;
+  top: 20px;
+  left: 9px;
+  width: 29px;
+  height: 43px;
+  border-radius: 9px 9px 4px 4px;
+  background: #e8e0cf;
+}
+
+.walker-bag {
+  position: absolute;
+  top: 4px;
+  left: 1px;
+  width: 13px;
+  height: 31px;
+  border-radius: 5px;
+  background: #536d58;
+  border: 1px solid #d9c5a2;
+}
+
+.walker-arm,
+.walker-leg {
+  position: absolute;
+  width: 8px;
+  border-radius: 8px;
+  transform-origin: top center;
+}
+
+.walker-arm {
+  height: 34px;
+  top: 5px;
+  background: #b98259;
+}
+
+.arm-left {
+  left: 1px;
+  animation: haven-arm-left .42s ease-in-out infinite alternate;
+}
+
+.arm-right {
+  right: 0;
+  animation: haven-arm-right .42s ease-in-out infinite alternate;
+}
+
+.walker-leg {
+  height: 39px;
+  top: 39px;
+  background: #b98259;
+}
+
+.leg-left {
+  left: 5px;
+  animation: haven-leg-left .42s ease-in-out infinite alternate;
+}
+
+.leg-right {
+  right: 5px;
+  animation: haven-leg-right .42s ease-in-out infinite alternate;
+}
+
+.walker-leg::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: -3px;
+  width: 17px;
+  height: 7px;
+  border-radius: 6px 8px 3px 3px;
+  background: #e8e0cf;
+}
+
+.haven-brand {
+  margin-top: 4px;
+  animation: haven-brand-appear .8s ease .5s both;
+}
+
+.haven-brand-icon {
+  font-size: 38px;
+  line-height: 1;
+}
+
+.haven-brand h1 {
+  margin: 5px 0;
+  color: #f4ead8;
+  font-size: 43px;
+  font-weight: 650;
+  letter-spacing: -2px;
+}
+
+.haven-brand p {
+  margin: 0;
+  color: #d0d9cf;
+  font-size: 14px;
+  letter-spacing: .5px;
+}
+
+.haven-loading {
+  margin: 27px auto 0;
+  max-width: 240px;
+}
+
+.haven-progress {
+  height: 3px;
+  overflow: hidden;
+  background: #ffffff25;
+  border-radius: 10px;
+}
+
+.haven-progress span {
+  display: block;
+  width: 40%;
+  height: 100%;
+  background: #e5d4b5;
+  border-radius: inherit;
+  animation: haven-progress-run 2.4s ease-in-out infinite;
+}
+
+.haven-loading p {
+  margin-top: 12px;
+  color: #d0d9cf;
+  font-size: 12px;
+  letter-spacing: .4px;
+}
+
+/* Animations */
+@keyframes haven-walk-inside {
+  0% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  12% {
+    transform: translateX(12px) translateY(-2px) scale(1);
+  }
+  28% {
+    transform: translateX(42px) translateY(0) scale(.94);
+  }
+  48% {
+    transform: translateX(79px) translateY(-2px) scale(.85);
+  }
+  70% {
+    transform: translateX(112px) translateY(0) scale(.76);
+  }
+  100% {
+    transform: translateX(148px) translateY(0) scale(.62);
+    opacity: 0;
+  }
+}
+
+@keyframes haven-door-open {
+  to { transform: perspective(400px) rotateY(-72deg); }
+}
+
+@keyframes haven-leg-left {
+  from { transform: rotate(-24deg); }
+  to { transform: rotate(27deg); }
+}
+
+@keyframes haven-leg-right {
+  from { transform: rotate(27deg); }
+  to { transform: rotate(-24deg); }
+}
+
+@keyframes haven-arm-left {
+  from { transform: rotate(25deg); }
+  to { transform: rotate(-28deg); }
+}
+
+@keyframes haven-arm-right {
+  from { transform: rotate(-28deg); }
+  to { transform: rotate(25deg); }
+}
+
+@keyframes haven-progress-run {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(350%); }
+}
+
+@keyframes haven-brand-appear {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #haven-loader *,
+  #haven-loader *::before,
+  #haven-loader *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 /* Account and seller verification workspace */
 .account-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin-top:24px;align-items:start}.account-panel{background:var(--surface,#fff);border:1px solid var(--line,#e5e7eb);border-radius:20px;padding:clamp(18px,3vw,28px);box-shadow:0 12px 35px #172b2410}.account-panel h3{margin:0 0 8px;font-size:1.25rem}.account-panel form{display:grid;gap:14px;margin-top:18px}.account-panel label{display:grid;gap:7px;font-weight:600;font-size:.9rem}.account-panel input:not([type=checkbox]),.account-panel select,.account-panel textarea{width:100%;min-width:0;border:1px solid var(--line,#d8ded9);border-radius:10px;padding:12px 13px;background:#fff;color:inherit;font:inherit}.account-panel input[type=file]{font-size:.82rem;padding:10px}.account-panel .consent-row{display:flex;align-items:flex-start;gap:10px;font-weight:500;line-height:1.5}.account-panel .consent-row input{margin-top:4px;flex:0 0 auto}.verification-status{background:#f4f7f4;border:1px solid #dce6de;border-radius:12px;padding:14px;margin-top:14px}.verification-status p{margin:7px 0 0;font-size:.88rem;color:#5b665f}.verification-status strong{text-transform:capitalize}.form-message{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.88rem;color:var(--ink,#153d32)}@media(max-width:760px){.account-grid{grid-template-columns:1fr}.account-panel{padding:18px}}
